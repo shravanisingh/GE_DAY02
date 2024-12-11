@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        ArrayList<EmpWageBuilder> companies = new ArrayList<>();
+        EmpWageBuilder empWageBuilder = new EmpWageBuilder();
 
         System.out.println("Welcome to Employee Wage Computation Program!");
         System.out.print("Enter the number of companies: ");
@@ -25,15 +25,11 @@ public class Main {
             System.out.print("Enter Maximum Working Hours per Month: ");
             int maxWorkingHours = sc.nextInt();
 
-            EmpWageBuilder empWageBuilder = new EmpWageBuilder(companyName, wagePerHour, maxWorkingDays, maxWorkingHours);
-            empWageBuilder.computeEmployeeWage();
-            companies.add(empWageBuilder);
+            empWageBuilder.addCompany(companyName, wagePerHour, maxWorkingDays, maxWorkingHours);
         }
 
-        System.out.println("\nSummary of Wages:");
-        for (EmpWageBuilder company : companies) {
-            System.out.println(company);
-        }
+        empWageBuilder.computeWages();
+        empWageBuilder.printCompanyWages();
 
         sc.close();
     }
