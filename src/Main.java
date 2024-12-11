@@ -1,48 +1,67 @@
+import java.util.Scanner;
+
 public class Main {
-    private  static final int isFullTime = 1;
-    private  static final int isPartTime = 2;
-    private  static final int wagePerHr = 20;
-    private  static final int workingDaysPerMonth = 20;
-    private  static final int totalWorkingHrs = 100;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-    public static void EmployeeWageCalculator(){
-        int empHrs = 0, empWagePerMonth = 0, totalWorkingDays = 0, totalEmployeeHrs = 0;
+        System.out.println("Welcome to Employee Wage Computation Program!");
+        System.out.print("Enter the number of companies: ");
+        int numberOfCompanies = sc.nextInt();
 
-        while(totalEmployeeHrs <= totalWorkingHrs && totalWorkingDays < workingDaysPerMonth) {
-            totalWorkingDays++;
+        for (int i = 1; i <= numberOfCompanies; i++) {
+            System.out.println("\nEnter details for Company " + i + ":");
 
-            int employeeType = (int) Math.floor(Math.random() * 10) % 3;
+            System.out.print("Enter Company Name: ");
+            String companyName = sc.next();
 
-            switch (employeeType) {
+            System.out.print("Enter Wage per Hour: ");
+            int wagePerHour = sc.nextInt();
 
-                case isFullTime: {
-                    System.out.println("Employee is doing FULL-TIME");
-                    empHrs = 8;
-                }
-                case isPartTime :{
-                    System.out.println("Employee is doing PART-TIME");
-                    empHrs = 4;
-                }
-                default:{
-                    System.out.println("Employee is ABSENT");
-                    empHrs = 0;
-                }
-            }
+            System.out.print("Enter Maximum Working Days per Month: ");
+            int maxWorkingDays = sc.nextInt();
 
-            totalEmployeeHrs += empHrs;
-            int empWagePerDay = empHrs * wagePerHr;
-            empWagePerMonth += empWagePerDay;
-
-            System.out.println("Employee's Wage per Day is: " + empWagePerDay);
-            System.out.println("Employee's Current Total Working Days are: " + totalWorkingDays);
-            System.out.println("Employee's Current Total Working Hours are: " + totalEmployeeHrs);
-            System.out.println("Employee's Current Total Wage is: " + empWagePerMonth);
+            System.out.print("Enter Maximum Working Hours per Month: ");
+            int maxWorkingHours = sc.nextInt();
+            computeEmployeeWage(companyName, wagePerHour, maxWorkingDays, maxWorkingHours);
         }
-        System.out.println("Employee's wage per Month is: " + empWagePerMonth);
+
+        sc.close();
     }
 
-    public static void main(String[] args) {
-        System.out.println("Welcome to Employee Wage Computation Program!");
-        EmployeeWageCalculator();
+    public static void computeEmployeeWage(String companyName, int wagePerHour, int maxWorkingDays, int maxWorkingHours) {
+        int totalWorkingDays = 0;
+        int totalWorkingHours = 0;
+        int totalWage = 0;
+
+        System.out.println("\nCalculating wages for " + companyName + "...");
+        while (totalWorkingDays < maxWorkingDays && totalWorkingHours < maxWorkingHours) {
+            totalWorkingDays++;
+            int dailyHours = getWorkingHours();
+            totalWorkingHours += dailyHours;
+            if (totalWorkingHours > maxWorkingHours) {
+                totalWorkingHours -= dailyHours;
+                break;
+            }
+            int dailyWage = dailyHours * wagePerHour;
+            totalWage += dailyWage;
+
+            System.out.println("Day " + totalWorkingDays + ": Worked " + dailyHours + " hours, Earned: " + dailyWage);
+        }
+        System.out.println("Total Wage for " + companyName + ": " + totalWage);
+        System.out.println("Total Days Worked: " + totalWorkingDays + ", Total Hours Worked: " + totalWorkingHours);
+    }
+
+    private static int getWorkingHours() {
+        int empCheck = (int) (Math.random() * 3);
+        switch (empCheck) {
+            case 0: // Absent
+                return 0;
+            case 1: // Part-time
+                return 4;
+            case 2: // Full-time
+                return 8;
+            default:
+                return 0;
+        }
     }
 }
