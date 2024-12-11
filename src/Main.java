@@ -10,20 +10,19 @@ public class Main {
             totalWorkingDays++;
             int employeeType = (int) Math.floor(Math.random() * 10) % 3;
             switch (employeeType) {
-                case isFullTime -> {
+                case isFullTime:{
                     System.out.println("Employee is doing FULL-TIME");
                     empHrs = 8;
                 }
-                case isPartTime -> {
+                case isPartTime: {
                     System.out.println("Employee is doing PART-TIME");
                     empHrs = 4;
                 }
-                default -> {
+                default:{
                     System.out.println("Employee is ABSENT");
                     empHrs = 0;
                 }
             }
-
             totalEmployeeHrs += empHrs;
             int empWagePerDay = empHrs * wagePerHr;
             empWagePerMonth += empWagePerDay;
