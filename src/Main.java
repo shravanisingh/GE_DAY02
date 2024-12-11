@@ -1,10 +1,12 @@
 public class Main {
-        private  static final int isFullTime = 1;
-        private  static final int isPartTime = 2;
-        private  static final int wagePerHr = 20;
-        public static void main(String[] args) {
-            System.out.println("Welcome to Employee Wage Computation Program!");
-            int empHrs, empWage;
+    private static final int isFullTime = 1;
+    private static final int isPartTime = 2;
+    private static final int wagePerHr = 20;
+
+    public static void main(String[] args) {
+        System.out.println("Welcome to Employee Wage Computation Program!");
+        int empHrs = 0, empWagePerDay = 0, empWagePerMonth = 0;
+        for (int day = 0; day <= 20; day++) {
             int employeeType = (int) Math.floor(Math.random() * 10) % 3;
             switch (employeeType) {
                 case isFullTime:
@@ -20,8 +22,11 @@ public class Main {
                     empHrs = 0;
                     break;
             }
-            empWage = empHrs * wagePerHr;
+            empWagePerDay = empHrs * wagePerHr;
+            empWagePerMonth += empWagePerDay;
             System.out.println("Employee's Hours are: " + empHrs);
-            System.out.println("Employee's Wage is: " + empWage);
+            System.out.println("Employee's Wage per Day is: " + empWagePerDay);
+        }
+        System.out.println("Employee's wage per Month is: " + empWagePerMonth);
     }
 }
