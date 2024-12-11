@@ -38,6 +38,7 @@ public class EmpWageBuilder implements IComputeEmpWage {
             }
             int dailyWage = dailyHours * companyEmpWage.getWagePerHour();
             totalWage += dailyWage;
+            companyEmpWage.addDailyWage(dailyWage);
 
             System.out.println("Day " + totalWorkingDays + ": Worked " + dailyHours + " hours, Earned: " + dailyWage);
         }
