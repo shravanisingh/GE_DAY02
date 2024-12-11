@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        EmpWageBuilder empWageBuilder = new EmpWageBuilder();
+        IComputeEmpWage empWageBuilder = new EmpWageBuilder();
 
         System.out.println("Welcome to Employee Wage Computation Program!");
         System.out.print("Enter the number of companies: ");
