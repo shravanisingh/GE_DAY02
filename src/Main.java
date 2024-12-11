@@ -26,7 +26,6 @@ public class Main {
             totalEmployeeHrs += empHrs;
             int empWagePerDay = empHrs * wagePerHr;
             empWagePerMonth += empWagePerDay;
-
             System.out.println("Employee's Wage per Day is: " + empWagePerDay);
             System.out.println("Employee's Current Total Working Days are: " + totalWorkingDays);
             System.out.println("Employee's Current Total Working Hours are: " + totalEmployeeHrs);
