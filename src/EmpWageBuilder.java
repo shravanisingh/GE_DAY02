@@ -1,17 +1,19 @@
 import java.util.ArrayList;
 
-public class EmpWageBuilder {
+public class EmpWageBuilder implements IComputeEmpWage {
     private ArrayList<CompanyEmpWage> companyEmpWages;
 
     public EmpWageBuilder() {
         this.companyEmpWages = new ArrayList<>();
     }
 
+    @Override
     public void addCompany(String companyName, int wagePerHour, int maxWorkingDays, int maxWorkingHours) {
         CompanyEmpWage companyEmpWage = new CompanyEmpWage(companyName, wagePerHour, maxWorkingDays, maxWorkingHours);
         companyEmpWages.add(companyEmpWage);
     }
 
+    @Override
     public void computeWages() {
         for (CompanyEmpWage companyEmpWage : companyEmpWages) {
             int totalWage = computeWageForCompany(companyEmpWage);
@@ -59,6 +61,7 @@ public class EmpWageBuilder {
         }
     }
 
+    @Override
     public void printCompanyWages() {
         System.out.println("\nSummary of Wages:");
         for (CompanyEmpWage companyEmpWage : companyEmpWages) {

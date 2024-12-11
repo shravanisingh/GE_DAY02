@@ -12,11 +12,9 @@ public class CompanyEmpWage {
         this.maxWorkingHours = maxWorkingHours;
         this.totalWage = 0;
     }
-
     public String getCompanyName() {
         return companyName;
     }
-
     public int getWagePerHour() {
         return wagePerHour;
     }
