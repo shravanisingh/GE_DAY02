@@ -27,10 +27,8 @@ public class Main {
 
             empWageBuilder.addCompany(companyName, wagePerHour, maxWorkingDays, maxWorkingHours);
         }
-
         empWageBuilder.computeWages();
         empWageBuilder.printCompanyWages();
-
         sc.close();
     }
 }
