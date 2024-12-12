@@ -27,8 +27,19 @@ public class Main {
 
             empWageBuilder.addCompany(companyName, wagePerHour, maxWorkingDays, maxWorkingHours);
         }
+
         empWageBuilder.computeWages();
         empWageBuilder.printCompanyWages();
+
+        // Query total wage by company name
+        System.out.print("\nEnter a company name to get its total wage: ");
+        String companyToQuery = sc.next();
+        int totalWage = empWageBuilder.getTotalWageByCompany(companyToQuery);
+
+        if (totalWage != -1) {
+            System.out.println("Total Wage for " + companyToQuery + ": " + totalWage);
+        }
+
         sc.close();
     }
 }

@@ -69,4 +69,16 @@ public class EmpWageBuilder implements IComputeEmpWage {
             System.out.println(companyEmpWage);
         }
     }
+
+    // Method to get total wage by company name
+    @Override
+    public int getTotalWageByCompany(String companyName) {
+        for (CompanyEmpWage companyEmpWage : companyEmpWages) {
+            if (companyEmpWage.getCompanyName().equalsIgnoreCase(companyName)) {
+                return companyEmpWage.getTotalWage();
+            }
+        }
+        System.out.println("Company not found!");
+        return -1; // Return -1 if the company is not found
+    }
 }
